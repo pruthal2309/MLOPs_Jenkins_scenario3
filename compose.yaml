@@ -1,0 +1,17 @@
+services:
+  dbapp:
+    build:
+      context: ./dbapp
+    ports: 
+      - "5001:5001"
+    environment:
+      DATABASE_URL: "sqlite:////app/instance/predictions.db"
+  webapp:
+    build: 
+      context: ./webapp
+    ports:
+      - "5000:5000"
+    environment:
+      DBAPP_URL: "http://dbapp:5001"
+    depends_on:
+      - dbapp
