@@ -39,7 +39,7 @@ pipeline {
 
         stage('Verify Deployment') {
             steps {
-                bat 'docker compose -p scenario-2 -f compose.yaml ps'
+                bat 'docker compose -p scenario-1 -f compose.yaml ps'
                 bat 'powershell -NoProfile -Command "Invoke-WebRequest -UseBasicParsing http://localhost:5000/ -TimeoutSec 10 | Out-Null"'
             }
         }
